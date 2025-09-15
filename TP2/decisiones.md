@@ -3,12 +3,14 @@
 ## Aplicación elegida
 - **Courses API (Go)** dentro del monorepo `final-arqsoft2`.
 - Motivo: servicio acotado con CRUD, ideal para mostrar imagen única corriendo en QA/PROD con variables de entorno, y conexión a una base de datos document-friendly.
+- https://github.com/mfrias42/Arqui-de-software-2.git
 
 ## Entorno Docker
 - Docker para empaquetar el binario de Go y sus dependencias.
 - **docker-compose.assignment.yml** (archivo aparte) para levantar:
   - MongoDB (con volumen persistente)
   - Courses API en **QA** y **PROD** usando **la misma imagen** (mismo `image:`) y distinta config por variables de entorno.
+  - ejecutar en terminal: docker compose -f docker-compose.assignment.yml up -d
 
 > Nota: No se modifica ni reemplaza ningún archivo del stack original. RabbitMQ, Solr y el resto del ecosistema quedan intactos. Este práctico corre aislado.
 
