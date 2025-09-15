@@ -58,10 +58,10 @@
 ## Test de que levanta la app
 - Se levanta la app con `docker compose -f docker-compose.assignment.yml up -d`.
 - Se verifica que la app se levante correctamente.
-  <img src="/images/imagenes corriendo.png" alt="test" width="800">
+  <img src="./images/imagenes corriendo.png" alt="test" width="800">
 
 - Se verifica que anden los tests
- <img src="/images/test funciona.png" alt="test" width="800">
+ <img src="./images/test funciona.png" alt="test" width="800">
 
  - Se verifica que se gaurden los datos cuando se reinicia
- <img src="/images/Test que se guardan datos.png" alt="test" width="800">
+ <img src="./images/Test que se guardan datos.png" alt="test" width="800">
