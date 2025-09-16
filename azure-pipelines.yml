@@ -1,0 +1,43 @@
+# Pipeline CI para TP4 DevOps
+# Configurado para ejecutarse en un agente Self-Hosted
+
+trigger:
+  - main
+
+pool:
+  name: 'Agent-Mac'
+
+stages:
+- stage: CI
+  jobs:
+  - job: BuildBackend
+    steps:
+    - checkout: self
+      path: s/TP4
+    - script: |
+        node --version
+        npm --version
+        cd $(Build.SourcesDirectory)/TP4/back
+        npm ci
+        npm test
+      displayName: 'Build and Test Backend'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.SourcesDirectory)/TP4/back'
+        artifact: 'backend-dist'
+
+  - job: BuildFrontend
+    steps:
+    - checkout: self
+      path: s/TP4_DevOps
+    - script: |
+        node --version
+        npm --version
+        cd $(Build.SourcesDirectory)/TP4/front
+        npm ci
+        npm run build
+      displayName: 'Build Frontend'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.SourcesDirectory)/TP4/front/build'
+        artifact: 'frontend-dist'
